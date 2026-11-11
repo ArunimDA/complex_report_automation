@@ -13,7 +13,7 @@ DB_CONFIG = {
 os.makedirs("output_reports", exist_ok=True)
 
 print("Connecting to Supabase...")
-conn = psycopg2.connect(**DB_CONFIG)
+conn = psycopg2.connect(os.getenv("DATABASE_URL"))
 
 # Commercial Orders
 df_com = pd.read_sql_query("SELECT * FROM amlan.ecommerce_com_orders;", conn)
