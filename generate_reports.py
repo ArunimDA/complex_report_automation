@@ -15,13 +15,13 @@ os.makedirs("output_reports", exist_ok=True)
 print("Connecting to Supabase...")
 conn = psycopg2.connect(**DB_CONFIG)
 
-# ১. Commercial Orders ডেটা
+# Commercial Orders
 df_com = pd.read_sql_query("SELECT * FROM amlan.ecommerce_com_orders;", conn)
 com_path = "output_reports/COM_Report.xlsx"
 df_com.to_excel(com_path, index=False)
 print(f"Saved: {com_path}")
 
-# ২. Marketing Campaigns ডেটা
+# Marketing Campaigns
 df_mkt = pd.read_sql_query("SELECT * FROM amlan.ecommerce_mkt_campaigns;", conn)
 mkt_path = "output_reports/MKT_Report.xlsx"
 df_mkt.to_excel(mkt_path, index=False)
